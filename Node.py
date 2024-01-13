@@ -1,5 +1,5 @@
-#Name: Your name
-#Date: Your date
+#Name: Trent Adams
+#Date: 01/13/2024
 
 class Node:
     def __init__(self, initial_data=None):
