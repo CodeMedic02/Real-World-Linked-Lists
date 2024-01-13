@@ -131,7 +131,7 @@ class LinkedList:
         temp = self.__head
 
         for i in range(index - 1):  # notice the -1
-            if temp.next.next != None:  # make sure we do not run over the end
+            if temp.next.next is not None:  # make sure we do not run over the end
                 temp = temp.next
 
         # delete the node at that index
@@ -140,17 +140,21 @@ class LinkedList:
     def remove(self, data):
         # Special case, empty list so nothing to remove
         if self.__head is None:
-            return  # end the method
+            return None  # end the method
+
+        # Create a variable for the return value
+        result = None
 
         # Special case, head node has data
         if self.__head.data == data:
+            result = self.__head.data
             if self.__head.next is None:  # single node only
                 self.__head is None
                 self.__tail is None
             else:
                 self.__head = self.__head.next  # use second node as head
 
-            return  # end the method
+            return result  # end the method
 
         # traverse the list and find the NODE BEFORE the index
         temp = self.__head
@@ -160,8 +164,11 @@ class LinkedList:
             parent = temp
             temp = temp.next
             if temp.data == data:
+                result = temp.data
                 parent.next = temp.next  # delete the node by overwriting the parent's next
                 break  # end the loop
+
+        return result
 
     def search(self, data):
         if self.__head is None:
